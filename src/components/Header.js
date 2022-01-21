@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from 'next/image';
 import {
   MenuIcon,
   SearchIcon,
@@ -6,32 +6,32 @@ import {
   XIcon,
   ChevronRightIcon,
   ChevronDownIcon,
-} from "@heroicons/react/outline";
+} from '@heroicons/react/outline';
 
-import { useState } from "react";
-import { UserCircleIcon } from "@heroicons/react/solid";
+import { useState } from 'react';
+import { UserCircleIcon } from '@heroicons/react/solid';
 
-import { signIn, signOut, useSession } from "next-auth/client";
+import { signIn, signOut, useSession } from 'next-auth/react';
 
-import { useRouter } from "next/router";
-import { useSelector } from "react-redux";
-import { selectItems } from "../slices/basketSlice";
-import Hover from "./Hover";
+import { useRouter } from 'next/router';
+import { useSelector } from 'react-redux';
+import { selectItems } from '../slices/basketSlice';
+import Hover from './Hover';
 
 function Header() {
   const [sidebaropen, setSidebaropen] = useState(false);
   const handleToggle = () => {
     setSidebaropen((prevSidebaropen) => !prevSidebaropen);
-    document.body.style.overflow = "hidden";
+    document.body.style.overflow = 'hidden';
   };
   const handleClose = () => {
     setSidebaropen((prevSidebaropen) => !prevSidebaropen);
-    document.body.style.overflow = "unset";
+    document.body.style.overflow = 'unset';
   };
 
   //
 
-  const [session] = useSession();
+  const { data: session, status } = useSession();
   const router = useRouter();
   const items = useSelector(selectItems);
 
@@ -40,13 +40,13 @@ function Header() {
       {/* sidebar */}
       <div
         className="bg-white absolute h-screen duration-100  z-50 overflow-x-hidden overflow-y-scroll "
-        style={sidebaropen ? { left: "0px" } : { left: "-500px" }}
+        style={sidebaropen ? { left: '0px' } : { left: '-500px' }}
       >
         {/* <XIcon className="absolute h-8 text-white -right-8 top-2 cursor-pointer" onClick={handleClose}/> */}
         <div className="bg-amazon_blue-light w-full h-12 flex items-center">
           <div className=" mx-4 flex items-center space-x-4 text-white font-bold">
             <UserCircleIcon className="h-8 text-white " />
-            <p>Hello, {session ? `${session.user.name}` : " "}</p>
+            <p>Hello, {session ? `${session.user.name}` : ' '}</p>
           </div>
           <XIcon
             className="h-8 text-white ml-20 cursor-pointer"
@@ -147,7 +147,7 @@ function Header() {
               onClick={!session ? signIn : signOut}
               className="py-2 w-ful text-xm hover:bg-gray-300 px-6 capitalize cursor-pointer"
             >
-              {!session ? "Sign In" : "Sign Out"}
+              {!session ? 'Sign In' : 'Sign Out'}
             </li>
           </ul>
         </div>
@@ -156,7 +156,7 @@ function Header() {
       <div
         className="absolute overflow-hidden left-0 right-0 h-screen bg-black opacity-70 z-40"
         style={
-          sidebaropen ? { visibility: "visible" } : { visibility: "hidden" }
+          sidebaropen ? { visibility: 'visible' } : { visibility: 'hidden' }
         }
         onClick={handleClose}
       ></div>
@@ -165,7 +165,7 @@ function Header() {
       <div className="flex items-center bg-amazon_blue p-1 flex-grow py-2">
         <div className="mt-2 flex items-center flex-grow sm:flex-grow-0">
           <Image
-            onClick={() => router.push("/")}
+            onClick={() => router.push('/')}
             src="https://links.papareact.com/f90"
             width={150}
             height={40}
@@ -184,7 +184,7 @@ function Header() {
         {/* right */}
         <div className="text-white flex items-center text-xs space-x-6 mx-6 whitespace-nowrap">
           <div onClick={!session ? signIn : signOut} className="link">
-            <p>{session ? `Hello, ${session.user.name}` : "Sign In"}</p>
+            <p>{session ? `Hello, ${session.user.name}` : 'Sign In'}</p>
             <p className="font-extrabold md:text-sm">Acount &Lists</p>
           </div>
           <div onClick={() => router.push('/orders')} className="link">
@@ -193,7 +193,7 @@ function Header() {
           </div>
           <div class="group inline-block relative z-50">
             <div
-              onClick={() => router.push("/checkout")}
+              onClick={() => router.push('/checkout')}
               className="relative link flex items-center"
             >
               <span className="absolute top-0 right-0 md:right-10 h-4 w-4 bg-yellow-400 text-center rounded-full text-black font-bold">
@@ -205,13 +205,13 @@ function Header() {
               </p>
             </div>
 
-            <ul onClick={() => router.push("/checkout")} className="absolute -left-20 hidden text-gray-700 pt-1 group-hover:block w-48">
+            <ul
+              onClick={() => router.push('/checkout')}
+              className="absolute -left-20 hidden text-gray-700 pt-1 group-hover:block w-48"
+            >
               <li className="">
-                <a
-                  className="rounded-t bg-white py-2 px-4 block whitespace-no-wrap"
-                  
-                >
-                  <Hover/>
+                <a className="rounded-t bg-white py-2 px-4 block whitespace-no-wrap">
+                  <Hover />
                 </a>
               </li>
               {/* <li className="">
