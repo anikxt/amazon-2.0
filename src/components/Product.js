@@ -1,20 +1,16 @@
-import { StarIcon } from "@heroicons/react/solid";
-import Image from "next/image";
-import { Fragment, useEffect, useState } from "react";
-import Currency from "react-currency-formatter";
-import { useDispatch } from "react-redux";
-import { addToBasket, removeFromBasket } from "../slices/basketSlice";
+import { StarIcon } from '@heroicons/react/solid';
+import Image from 'next/image';
+import { Fragment, useEffect, useState } from 'react';
+import Currency from 'react-currency-formatter';
+import { useDispatch } from 'react-redux';
+import { addToBasket, removeFromBasket } from '../slices/basketSlice';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
 // import CloseIcon from '@material-ui/icons/Close';
-import {
- 
-  XIcon,
- 
-} from "@heroicons/react/outline";
+import { XIcon } from '@heroicons/react/outline';
 
 const useStyles = makeStyles((theme) => ({
   close: {
@@ -48,7 +44,7 @@ function Product({ id, title, price, description, category, image }) {
     dispatch(addToBasket(product));
   };
 
-    const [snackPack, setSnackPack] = useState([]);
+  const [snackPack, setSnackPack] = useState([]);
   const [open, setOpen] = useState(false);
   const [messageInfo, setMessageInfo] = useState(undefined);
 
@@ -65,11 +61,9 @@ function Product({ id, title, price, description, category, image }) {
   }, [snackPack, messageInfo, open]);
 
   const handleClick = (message) => () => {
-
     addItemsToBasket();
 
     setSnackPack((prev) => [...prev, { message, key: new Date().getTime() }]);
-    
   };
 
   const handleClose = (event, reason) => {
@@ -83,12 +77,9 @@ function Product({ id, title, price, description, category, image }) {
     setMessageInfo(undefined);
   };
 
-
-    const RemoveItemFromBasket = () => {
-
-    dispatch(removeFromBasket({id}));
+  const RemoveItemFromBasket = () => {
+    dispatch(removeFromBasket({ id }));
     handleClose();
-
   };
   const classes = useStyles();
   return (
@@ -112,7 +103,7 @@ function Product({ id, title, price, description, category, image }) {
       <p className="text-xs my-2 line-clamp-2">{description}</p>
 
       <div>
-        <Currency quantity={price * 73} currency="INR" />
+        <Currency quantity={price * 70} currency="INR" />
       </div>
 
       {hasPrime && (
@@ -130,11 +121,15 @@ function Product({ id, title, price, description, category, image }) {
         Add to Basket
       </button> */}
 
-      <button className="mt-auto button" onClick={handleClick(`${title} -- Added to basket`)}>Add to Basket</button>
+      <button
+        className="mt-auto button"
+        onClick={handleClick(`${title} -- Added to basket`)}
+      >
+        Add to Basket
+      </button>
       <Snackbar
-        style={{zIndex:"10000"}}
+        style={{ zIndex: '10000' }}
         key={messageInfo ? messageInfo.key : undefined}
-        
         anchorOrigin={{
           vertical: 'bottom',
           horizontal: 'left',
@@ -145,8 +140,12 @@ function Product({ id, title, price, description, category, image }) {
         onExited={handleExited}
         message={messageInfo ? messageInfo.message : undefined}
         action={
-          <Fragment style={{zIndex:"10000"}} className="bg-green-400">
-            <Button color="secondary" size="small" onClick={RemoveItemFromBasket} >
+          <Fragment style={{ zIndex: '10000' }} className="bg-green-400">
+            <Button
+              color="secondary"
+              size="small"
+              onClick={RemoveItemFromBasket}
+            >
               Remove
             </Button>
             <IconButton
@@ -160,7 +159,6 @@ function Product({ id, title, price, description, category, image }) {
           </Fragment>
         }
       />
-
     </div>
   );
 }

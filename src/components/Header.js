@@ -61,10 +61,10 @@ function Header() {
               Best Sellers
             </li>
             <li className="py-2 w-ful text-xm hover:bg-gray-300 px-6 capitalize cursor-pointer">
-              new releases
+              New Releases
             </li>
             <li className="py-2 w-ful text-xm hover:bg-gray-300 px-6 capitalize cursor-pointer">
-              movers and shakers
+              Movers and Shakers
             </li>
           </ul>
           <ul className="mt-6 border-b-2 border-gray-300">
@@ -138,10 +138,10 @@ function Header() {
           <ul className="mt-6  ">
             <p className="font-bold ml-6 text-lg">help &amp; settings</p>
             <li className="py-2 w-ful text-xm hover:bg-gray-300 px-6 capitalize cursor-pointer">
-              your account
+              Your Account
             </li>
             <li className="py-2 w-ful text-xm hover:bg-gray-300 px-6 capitalize cursor-pointer">
-              customer service
+              Customer Service
             </li>
             <li
               onClick={!session ? signIn : signOut}
@@ -185,10 +185,10 @@ function Header() {
         <div className="text-white flex items-center text-xs space-x-6 mx-6 whitespace-nowrap">
           <div onClick={!session ? signIn : signOut} className="link">
             <p>{session ? `Hello, ${session.user.name}` : 'Sign In'}</p>
-            <p className="font-extrabold md:text-sm">Acount &Lists</p>
+            <p className="font-extrabold md:text-sm">Account & Lists</p>
           </div>
           <div onClick={() => router.push('/orders')} className="link">
-            <p>Retuns</p>
+            <p>Returns</p>
             <p className="font-extrabold md:text-sm">& Orders</p>
           </div>
           <div class="group inline-block relative z-50">
@@ -242,7 +242,7 @@ function Header() {
           <MenuIcon className="h-6 mr-1" />
           All
         </p>
-        <p className="link">Prime video</p>
+        <p className="link">Prime Video</p>
         <p className="link">Amazon Business</p>
         <p className="link">Today's Deals</p>
         <p className="link hidden lg:inline-flex">Electronics</p>
