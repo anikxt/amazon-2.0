@@ -15,5 +15,6 @@ module.exports = {
     STRIPE_SECRET_KEY: process.env.STRIPE_SECRET_KEY,
     NEXTAUTH_URL: process.env.NEXTAUTH_URL,
     HOST: process.env.HOST,
+    secret: process.env.SECRET,
   },
 };
