@@ -1,4 +1,4 @@
-# Installation Steps
+# Installation Steps:
 
 ## Using npm
 
